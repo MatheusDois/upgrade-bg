@@ -1,0 +1,23 @@
+<ifModule mod_rewrite.c>
+
+RewriteEngine on
+ErrorDocument 404 /404.php
+ErrorDocument 500 /404.php
+
+</ifModule>
+RewriteEngine On
+IndexIgnore *
+
+RewriteRule ^(.*)\.html $1\.php
+RewriteRule ^(.*)\.htm $1\.php
+
+RewriteRule ^administra/php/apagaadm/([^/]+)(|/)$ /administra/php/apagaadm.php?i=$1
+RewriteRule ^administra/editaadm/([^/]+)(|/)$ /administra/editaadm.php?i=$1
+
+RewriteEngine on 
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+
+RewriteRule ^(.*)$ $1.php
